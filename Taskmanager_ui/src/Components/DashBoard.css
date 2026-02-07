@@ -1,0 +1,162 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* Page */
+.dashboard {
+  min-height: 100vh;
+  padding: 24px;
+  background: #f4f6fb;
+}
+
+/* Title */
+.dashboard-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+}
+
+/* Add task section */
+.add-task {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.add-task input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
+}
+
+.add-task button {
+  padding: 12px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background: #4f46e5;
+}
+
+/* Table */
+.table-wrapper {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th {
+  text-align: left;
+  padding: 14px;
+  background: #f9fafb;
+  font-size: 14px;
+  color: #374151;
+}
+
+.task-table td {
+  padding: 14px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #111827;
+}
+
+/* Empty */
+.empty {
+  text-align: center;
+  padding: 24px;
+  color: #6b7280;
+}
+
+/* Status dropdown */
+.status {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Status colors */
+.status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status.ongoing {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.status.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* Edit */
+.actions .edit {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.actions .edit:hover {
+  background: #c7d2fe;
+}
+
+/* Delete */
+.actions .delete {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.actions .delete:hover {
+  background: #fecaca;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .add-task {
+    flex-direction: column;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}
