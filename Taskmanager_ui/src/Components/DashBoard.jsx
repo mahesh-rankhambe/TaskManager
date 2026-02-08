@@ -87,75 +87,80 @@ const DashBoard = () => {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Task Manager Dashboard</h2>
+   <div className="dashboard">
+  <h2 className="dashboard-title">Task Manager Dashboard</h2>
 
-      {/* ADD TASK */}
-      <input
-        type="text"
-        placeholder="Enter task title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <button onClick={addTask} style={{ marginLeft: "10px" }}>
-        Add Task
-      </button>
+  {/* ADD TASK */}
+  <div className="add-task">
+    <input
+      type="text"
+      placeholder="Enter task title"
+      value={title}
+      onChange={(e) => setTitle(e.target.value)}
+    />
+    <button onClick={addTask}>Add Task</button>
+  </div>
 
-      <hr />
+  <hr className="divider" />
 
-      {/* TASK TABLE */}
-      <table border="1" cellPadding="10" width="100%">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Status</th>
-            <th>Actions</th>
+  {/* TASK TABLE */}
+  <table className="task-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {tasks.length === 0 ? (
+        <tr>
+          <td colSpan="4" className="empty">
+            No Tasks Found
+          </td>
+        </tr>
+      ) : (
+        tasks.map((task) => (
+          <tr key={task.id}>
+            <td>{task.id}</td>
+            <td>{task.title}</td>
+
+            <td>
+              <select
+                value={task.status ?? "PENDING"}
+                onChange={(e) =>
+                  updateStatus(task, e.target.value)
+                }
+              >
+                <option value="PENDING">Pending</option>
+                <option value="ONGOING">Ongoing</option>
+                <option value="COMPLETED">Completed</option>
+              </select>
+            </td>
+
+            <td className="actions">
+              <button
+                className="edit-btn"
+                onClick={() => editTask(task)}
+              >
+                Edit
+              </button>
+              <button
+                className="delete-btn"
+                onClick={() => deleteTask(task.id)}
+              >
+                Delete
+              </button>
+            </td>
           </tr>
-        </thead>
+        ))
+      )}
+    </tbody>
+  </table>
+</div>
 
-        <tbody>
-          {tasks.length === 0 ? (
-            <tr>
-              <td colSpan="4" align="center">
-                No Tasks Found
-              </td>
-            </tr>
-          ) : (
-            tasks.map((task) => (
-              <tr key={task.id}>
-                <td>{task.id}</td>
-
-                <td>{task.title}</td>
-
-                <td>
-                  <select
-                    value={task.status ?? "PENDING"}
-                    onChange={(e) =>
-                      updateStatus(task, e.target.value)
-                    }
-                  >
-                    <option value="PENDING">Pending</option>
-                    <option value="ONGOING">Ongoing</option>
-                    <option value="COMPLETED">Completed</option>
-                  </select>
-                </td>
-
-                <td>
-                  <button onClick={() => editTask(task)}>Edit</button>
-                  <button
-                    onClick={() => deleteTask(task.id)}
-                    style={{ marginLeft: "8px" }}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </div>
   );
 };
 
